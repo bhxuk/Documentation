@@ -11,6 +11,7 @@ FROM node:24-alpine AS server
 WORKDIR /app/server
 COPY server/package.json server/package-lock.json ./
 RUN npm ci --omit=dev
+COPY server/ ./
 
 # ---- runtime ----
 FROM node:24-alpine
