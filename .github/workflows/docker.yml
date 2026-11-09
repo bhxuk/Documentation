@@ -47,6 +47,10 @@ jobs:
           curl -fs 'http://localhost:3000/api/search?q=hello' | grep -q 'test/a.txt'
           docker logs doc
 
+      - name: Container logs
+        if: failure()
+        run: docker ps -a; docker logs doc || true
+
       - name: Log in to GHCR
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
