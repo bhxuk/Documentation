@@ -1,0 +1,10 @@
+services:
+  documentation:
+    image: ghcr.io/bhxuk/documentation:latest
+    build: .
+    container_name: documentation
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

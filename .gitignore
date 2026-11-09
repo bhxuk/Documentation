@@ -1,0 +1,7 @@
+node_modules/
+dist/
+data/
+client/public/excalidraw-assets/
+.claude/
+.env
+*.log
