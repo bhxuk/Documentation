@@ -1,5 +1,5 @@
 # ---- build the web client ----
-FROM node:22-alpine AS client
+FROM node:24-alpine AS client
 WORKDIR /app/client
 COPY client/package.json client/package-lock.json ./
 RUN npm ci
@@ -7,13 +7,13 @@ COPY client/ ./
 RUN npm run build
 
 # ---- server deps ----
-FROM node:22-alpine AS server
+FROM node:24-alpine AS server
 WORKDIR /app/server
 COPY server/package.json server/package-lock.json ./
 RUN npm ci --omit=dev
 
 # ---- runtime ----
-FROM node:22-alpine
+FROM node:24-alpine
 LABEL org.opencontainers.image.source="https://github.com/bhxuk/Documentation" \
       org.opencontainers.image.title="Documentation" \
       org.opencontainers.image.description="Self-hosted docs: block-editor pages, code editor and whiteboards in one"
